@@ -1,0 +1,113 @@
+<% model_name = entity.class.to_s.underscore %>
+<%=
+  form_with(
+      model: entity,
+      html: {
+          id: "#{model_name}-form",
+          data: { check_url: check_testimonials_path }
+      }
+  ) do |f|
+%>
+  <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
+
+  <dl>
+    <%= render partial: 'shared/forms/priority', locals: { f: f } %>
+
+    <dt><%= f.label :name %></dt>
+    <dd>
+      <%=
+        f.text_field(
+            :name,
+            id: "#{model_name}_name",
+            size: nil,
+            maxlength: Testimonial::NAME_LIMIT,
+            required: true,
+            data: {
+                check: :name
+            }
+        )
+      %>
+      <div class="check-result-error" data-field="name"></div>
+      <div class="guideline"><%= t('.guidelines.name') %></div>
+    </dd>
+
+    <dt><%= f.label :text %></dt>
+    <dd>
+      <%=
+        f.text_area(
+            :text,
+            id: "#{model_name}_text",
+            cols: 80,
+            rows: 3,
+            class: 'auto-expand',
+            data: {
+                check: :text,
+                min_rows: 3,
+                max_rows: 40
+            }
+        )
+      %>
+      <div class="check-result-error" data-field="text"></div>
+      <div class="guideline"><%= t('.guidelines.text') %></div>
+    </dd>
+
+<!--
+    <dt><%= f.label :image %></dt>
+    <dd>
+      <% figure_id = "#{model_name}-image" %>
+      <figure role="group" class="preview" id="<%= figure_id %>">
+        <% if entity.image.blank? %>
+          <%= f.label :image, image_tag('biovision/base/placeholders/1x1.svg') %>
+        <% else %>
+          <%= f.label :image, image_tag(entity.image.medium_url) %>
+        <% end %>
+        <figcaption>
+          <%=
+            f.file_field(
+                :image,
+                id: "#{model_name}_image",
+                accept: 'image/jpeg,image/png,image/svg+xml',
+                data: { image: figure_id }
+            )
+          %>
+        </figcaption>
+      </figure>
+      <div class="guideline"><%= t('.guidelines.image') %></div>
+    </dd>
+-->
+<!--
+    <dt><%= f.label :url %></dt>
+    <dd>
+      <%=
+        f.url_field(
+            :url,
+            id: "#{model_name}_url",
+            size: nil,
+            maxlength: Testimonial::URL_LIMIT
+        )
+      %>
+      <div class="guideline"><%= t('.guidelines.url') %></div>
+    </dd>
+-->
+    <dt><%= f.label :date %></dt>
+    <dd>
+      <%=
+        f.date_field(
+            :date,
+            id: "#{model_name}_date",
+            size: 10,
+            required: true
+        )
+      %>
+    </dd>
+
+    <%= render partial: 'shared/forms/entity_flags', locals: { f: f } %>
+  </dl>
+
+  <%= render 'shared/forms/state_container' %>
+
+  <div class="buttons">
+    <%= hidden_field_tag :entity_id, entity.id %>
+    <%= f.button t(:save), type: :submit, class: 'button-save' %>
+  </div>
+<% end %>

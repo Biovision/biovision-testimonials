@@ -1,0 +1,56 @@
+<% content_for :meta_title, t('.title', name: @entity.name) %>
+<% content_for :breadcrumbs do %>
+  <%= link_to(t('admin.testimonials.nav_item.text'), admin_testimonials_path) %>
+  <span><%= @entity.name %></span>
+<% end %>
+
+<article>
+  <h1><%= @entity.name %></h1>
+
+  <ul class="actions">
+    <li><%= back_icon(admin_testimonials_path) %></li>
+    <li><%= edit_icon(edit_testimonial_path(id: @entity.id)) %></li>
+  </ul>
+
+  <dl>
+    <dt><%= t('activerecord.attributes.testimonial.priority') %></dt>
+    <dd><%= @entity.priority %></dd>
+
+    <% unless @entity.image.blank? %>
+      <dt><%= t('activerecord.attributes.testimonial.image') %></dt>
+      <dd>
+        <figure class="preview">
+          <%= simple_image_medium(@entity) %>
+        </figure>
+      </dd>
+    <% end %>
+
+    <dt><%= t('activerecord.attributes.testimonial.date') %></dt>
+    <dd><%= time_tag @entity.date %></dd>
+
+    <dt><%= t('activerecord.attributes.testimonial.name') %></dt>
+    <dd><%= @entity.name %></dd>
+
+    <% unless @entity.url.blank? %>
+      <dt><%= t('activerecord.attributes.testimonial.url') %></dt>
+      <dd><%= @entity.url %></dd>
+    <% end %>
+
+    <dt><%= t('activerecord.attributes.testimonial.text') %></dt>
+    <dd>
+      <div class="text">
+        <%= simple_format(@entity.text) %>
+      </div>
+    </dd>
+  </dl>
+
+  <%=
+    render(
+        partial: 'shared/admin/toggleable',
+        locals: {
+            entity: @entity,
+            url: toggle_admin_testimonial_path(id: @entity.id)
+        }
+    )
+  %>
+</article>

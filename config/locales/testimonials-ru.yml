@@ -1,0 +1,57 @@
+ru:
+  activerecord:
+    models:
+      testimonial: "Отзыв"
+    attributes:
+      testimonial:
+        date: "Дата"
+        image: "Картинка"
+        language: "Язык"
+        language_id: "Язык"
+        name: "Имя"
+        priority: "Порядок сортировки"
+        text: "Текст"
+        url: "URL"
+        visible: "Показывать"
+  admin:
+    testimonials:
+      show:
+        title: "Отзывы: %{name}"
+      nav_item:
+        text: "Отзывы"
+        description: "Управление отзывами"
+      index:
+        heading: "Отзывы"
+        nav_text: "Отзывы"
+        title: "Отзывы"
+    index:
+      dashboard:
+        biovision_testimonials:
+          heading: "Отзывы"
+  biovision:
+    components:
+      testimonials:
+        name: "Отзывы"
+  testimonials:
+    new:
+      heading: "Добавить отзыв"
+      nav_text: "Создать"
+      title: "Добавление отзыва"
+    edit:
+      heading: "Редактирование отзыва"
+      nav_text: "Редактировать"
+      title: "Редактирование отзыва"
+    destroy:
+      success: "Отзыв удалён"
+    form:
+      guidelines:
+        image: "Картинка в формате JPG или PNG размером в пределах 1280×1280 для иллюстрации."
+        name: "Максимум 100 символов."
+        text: "Максимум 5000 символов."
+        url: "Ссылка на страницу клиента (социальная сеть и прочее). Максимум 255 символов."
+    update:
+      success: "Отзыв успешно отредактирован"
+  index:
+    dashboard:
+      biovision_partners:
+        heading: "Отзывы"

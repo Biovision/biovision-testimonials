@@ -1,0 +1,9 @@
+<div>
+  <figure>
+    <figcaption><%= testimonial.name %></figcaption>
+    <blockquote>
+      <%= simple_format(testimonial.text) %>
+    </blockquote>
+  </figure>
+  <%= time_tag testimonial.date %>
+</div>
