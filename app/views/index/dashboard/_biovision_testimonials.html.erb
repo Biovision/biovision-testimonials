@@ -1,4 +1,7 @@
-<% collection = Testimonial.list_for_visitors %>
+<%
+  collection = Testimonial.list_for_visitors
+  timeout ||= 0
+%>
 <% if collection.load.any? %>
   <section class="index-testimonials">
     <h2><%= t('.heading') %></h2>
@@ -7,7 +10,8 @@
       render(
           partial: 'testimonials/carousel',
           locals: {
-              collection: collection
+              collection: collection,
+              timeout: timeout
           }
       )
     %>

@@ -1,6 +1,6 @@
 <%
   collection ||= Testimonial.list_for_visitors
-  timeout ||= 3000
+  timeout ||= 0
 %>
 <% if collection.any? %>
   <div class="js-biovision-carousel testimonials-carousel" data-timeout="<%= timeout %>">

@@ -1,9 +1,9 @@
-<div>
+<div itemprop="review" itemscope itemtype="http://schema.org/Review">
   <figure>
-    <figcaption><%= testimonial.name %></figcaption>
-    <blockquote>
+    <figcaption itemprop="author"><%= testimonial.name %></figcaption>
+    <blockquote itemprop="reviewBody">
       <%= simple_format(testimonial.text) %>
     </blockquote>
   </figure>
-  <%= time_tag testimonial.date %>
+  <%= time_tag(testimonial.date, itemprop: 'datePublished') %>
 </div>

@@ -53,5 +53,5 @@ ru:
       success: "Отзыв успешно отредактирован"
   index:
     dashboard:
-      biovision_partners:
+      biovision_testimonials:
         heading: "Отзывы"
