@@ -30,7 +30,9 @@ class CreateTestimonials < ActiveRecord::Migration[5.2]
   end
 
   def create_component
-    BiovisionComponent.create(slug: :testimonials)
+    criteria = { slug: Biovision::Components::TestimonialsComponent::SLUG }
+
+    BiovisionComponent.create!(criteria) unless BiovisionComponent.where(criteria).exists?
   end
 
   def create_privilege

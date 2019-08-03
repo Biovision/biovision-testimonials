@@ -2,6 +2,6 @@
 
 module Biovision
   module Testimonials
-    VERSION = '0.1.190607.1'
+    VERSION = '0.2.190804.1'
   end
 end
